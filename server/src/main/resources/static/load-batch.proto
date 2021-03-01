@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+message LoadBatch {
+  int64 numberOfRecords = 1;
+  repeated Record records = 2;
+}
+
+message Record {
+  int32 recordIndex = 1;
+  int64 timestamp = 2;
+  String city = 3;
+  int32 numberBytesSensorData = 4;
+  SensorCollection sensorsData = 5;
+  int64 crc32SensorsData = 6;
+}
+
+message String {
+  int32 numberOfBytes = 1;
+  bytes bytesInUtf8 = 2;
+}
+
+message SensorCollection {
+  int32 numberOfSensors = 3;
+  repeated Sensor sensors = 4;
+}
+
+message Sensor {
+  String id = 1;
+  int32 measure = 2;
+}
